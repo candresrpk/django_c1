@@ -1,0 +1,26 @@
+{% extends '../base.html' %}
+
+
+{% block content %}
+
+    <h2>All tasts</h2>
+    <a href="{% url "tasks:create_task" %}">Create Task</a>
+
+    {% for task in tasks %}
+    
+        <a href="{% url "tasks:edit_task"  task.id %}">
+            <div class="card">
+                <h2>{{task.title}}</h2>
+                <p>{{task.description}}</p>
+            </div>
+
+            <a class="btn btn-success" href="{% url "tasks:complete_task"  task.id %}">Completed</a>
+
+            <a class="btn btn-danger" href="{% url "tasks:delete_task"  task.id %}">Delete</a>
+        </a>
+
+    {% endfor %}
+
+
+
+{% endblock  %}
